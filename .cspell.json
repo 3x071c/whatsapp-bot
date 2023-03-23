@@ -1,7 +1,7 @@
 {
 	"allowCompoundWords": true,
 	"flagWords": [],
-	"ignorePaths": [".*"],
+	"ignorePaths": [".git", "node_modules"],
 	"import": ["@cspell/dict-de-de/cspell-ext.json"],
 	"language": "en,de",
 	"useGitignore": true,
