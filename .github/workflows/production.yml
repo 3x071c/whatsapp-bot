@@ -1,0 +1,33 @@
+# This workflow deploys the app to workers 🚀
+name: Production Deployment
+on:
+    push:
+        branches:
+            - trunk
+
+# Cancel previous instances of this workflow
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref || github.run_id }}
+    cancel-in-progress: true
+
+env:
+    CLOUDFLARE_API_TOKEN: "${{ secrets.CF_API_TOKEN }}"
+
+jobs:
+    deploy:
+        name: Production Deploy
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        environment:
+            name: Production
+            url: ${{ steps.deploy.outputs.url }}
+        steps:
+            - uses: ./.github/actions/ci_setup
+            - name: Deploy
+              id: deploy
+              run: |
+                  set -ex -o pipefail
+                  npm i -g wrangler
+                  URL=$(wrangler publish | tee /dev/tty | grep 'workers.dev' | head -n 1 | xargs)
+                  echo "✅ URL: $URL"
+                  echo "::set-output name=url::https://$URL"
