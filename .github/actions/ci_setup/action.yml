@@ -1,0 +1,20 @@
+name: Continuous Integration Setup
+description: Composite action to run shared job steps
+
+runs:
+    using: composite
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3.4.0
+        - name: Setup
+          uses: actions/setup-node@v3.6.0
+          with:
+              node-version: 18 # Use the latest LTS release
+              cache: npm
+        - name: Install
+          uses: nick-fields/retry@v2.8.3 # Retry npm installation when an http download fails (often due to rate limiting)
+          with:
+              timeout_minutes: 5
+              max_attempts: 3
+              command: npm ci # Installs dependencies without modifying lockfile (for production installs)
+              retry_wait_seconds: 60

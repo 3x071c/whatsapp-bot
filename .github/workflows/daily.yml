@@ -18,14 +18,14 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Right Back Where We Started From
-              uses: dessant/reaction-comments@v2.2.0
+              uses: dessant/reaction-comments@v3.0.0
     cron_lock:
         name: Thread Locker
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:
             - name: Eye of The Tiger # Prevent "necrobumps"
-              uses: dessant/lock-threads@v3.0.0
+              uses: dessant/lock-threads@v4.0.0
               with:
                   issue-inactive-days: 7
                   exclude-any-issue-labels: dependencies
@@ -38,7 +38,7 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Keep the Faith
-              uses: actions/stale@v6.0.0
+              uses: actions/stale@v8.0.0
               id: stale
               with:
                   days-before-stale: 30

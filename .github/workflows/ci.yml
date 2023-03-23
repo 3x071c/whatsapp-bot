@@ -14,20 +14,7 @@ jobs:
         runs-on: ubuntu-latest
         timeout-minutes: 15
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3.0.0
-            - name: Setup
-              uses: actions/setup-node@v3.0.0
-              with:
-                  node-version: 18 # Use the latest LTS release
-                  cache: npm
-            - name: Install
-              uses: nick-fields/retry@v2.6.0 # Retry npm installation when an http download fails (often due to rate limiting)
-              with:
-                  timeout_minutes: 5
-                  max_attempts: 3
-                  command: npm ci # Installs dependencies without modifying lockfile (for production installs)
-                  retry_wait_seconds: 60
+            - uses: ./.github/actions/ci_setup
             - name: Run Linters
               run: npm run lint
               env:
@@ -38,22 +25,20 @@ jobs:
         runs-on: ubuntu-latest
         timeout-minutes: 15
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3.0.0
-            - name: Setup
-              uses: actions/setup-node@v3.0.0
-              with:
-                  node-version: 18 # Use the latest LTS release
-                  cache: npm
-            - name: Install
-              uses: nick-fields/retry@v2.6.0 # Retry npm installation when an http download fails (often due to rate limiting)
-              with:
-                  timeout_minutes: 5
-                  max_attempts: 3
-                  command: npm ci # Installs dependencies without modifying lockfile (for production installs)
-                  retry_wait_seconds: 60
+            - uses: ./.github/actions/ci_setup
             - name: Run TypeScript
               run: npm run check
+              env:
+                  ci: true
+                  NODE_ENV: production
+    test:
+        name: Testing # via vitest
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: ./.github/actions/ci_setup
+            - name: Run Tests
+              run: npm test
               env:
                   ci: true
                   NODE_ENV: production

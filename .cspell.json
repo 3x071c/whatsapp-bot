@@ -5,5 +5,5 @@
 	"import": ["@cspell/dict-de-de/cspell-ext.json"],
 	"language": "en,de",
 	"useGitignore": true,
-	"words": ["Homic", "itty", "tsbuildinfo"]
+	"words": ["Homic", "itty", "tsbuildinfo", "kodiak"]
 }

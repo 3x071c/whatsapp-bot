@@ -15,4 +15,4 @@ jobs:
         timeout-minutes: 10
         steps:
             - name: Another One Bites The Dust # These tend to introduce spam
-              uses: dessant/reaction-comments@v2.2.0
+              uses: dessant/reaction-comments@v3.0.0

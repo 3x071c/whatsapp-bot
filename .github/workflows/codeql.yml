@@ -1,0 +1,38 @@
+# This workflow was largely left untouched after having been generated automatically
+name: CodeQL # Context-aware scan for security vulnerabilities (https://codeql.github.com)
+
+on:
+    push:
+        branches:
+            - trunk
+    pull_request:
+        # The branches below must be a subset of the branches above
+        branches:
+            - trunk
+    schedule:
+        - cron: 41 9 * * 5
+    workflow_dispatch: # This allows manual triggering from the GitHub UI
+
+# Cancel previous instances of this workflow
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref || github.run_id }}
+    cancel-in-progress: true
+
+jobs:
+    cql:
+        name: CodeQL
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        permissions:
+            actions: read
+            contents: read
+            security-events: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3.4.0
+            - name: Initialize
+              uses: github/codeql-action/init@v2.2.8
+            - name: Build
+              uses: github/codeql-action/autobuild@v2.2.8 # This figures out build instructions automatically
+            - name: Analyze
+              uses: github/codeql-action/analyze@v2.2.8

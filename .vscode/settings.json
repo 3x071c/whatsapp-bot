@@ -5,6 +5,9 @@
 	"[gitignore]": {
 		"editor.defaultFormatter": "foxundermoon.shell-format"
 	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
 	"cSpell.enabled": true,
 	"cSpell.language": "en,de",
 	"editor.codeActionsOnSave": {

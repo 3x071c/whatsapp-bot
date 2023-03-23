@@ -7,7 +7,7 @@ describe("Worker", () => {
 	let worker: UnstableDevWorker;
 
 	beforeAll(async () => {
-		worker = await unstable_dev(source, {}, { disableExperimentalWarning: true });
+		worker = await unstable_dev(source, { experimental: { disableExperimentalWarning: true } });
 	});
 
 	afterAll(async () => {
