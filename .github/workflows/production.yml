@@ -44,4 +44,4 @@ jobs:
                       echo "❌ FAILED TO UPDATE HOOK"
                   fi
                   exec 3>&-
-                  echo "::set-output name=url::$URL"
+                  echo "url=$URL" >> $GITHUB_OUTPUT
