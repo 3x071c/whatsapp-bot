@@ -12,6 +12,9 @@ concurrency:
 
 env:
     CLOUDFLARE_API_TOKEN: "${{ secrets.CF_API_TOKEN }}"
+    MAYTAPI_PRODUCT: "${{ secrets.MAYTAPI_PRODUCT }}"
+    MAYTAPI_PHONE: "${{ secrets.MAYTAPI_PHONE }}"
+    MAYTAPI_TOKEN: "${{ secrets.MAYTAPI_TOKEN }}"
 
 jobs:
     deploy:
@@ -32,4 +35,11 @@ jobs:
                   npm i -g wrangler
                   URL=$(wrangler publish | tee /dev/tty | grep 'workers.dev' | head -n 1 | xargs)
                   echo "✅ URL: $URL"
-                  echo "::set-output name=url::https://$URL"
+                  if ! HOOK=$(curl "https://api.maytapi.com/api/${MAYTAPI_PRODUCT}/setWebhook" \
+                       --header "x-maytapi-key: ${MAYTAPI_TOKEN}" \
+                       --json "{ \"webhook\": \"${URL}/hook\" }"); then
+                      echo "❌ FAILED TO UPDATE HOOK"
+                  fi
+                  echo "➡️ HOOK:"
+                  printf '%s' '$HOOK'
+                  echo "::set-output name=url::$URL"

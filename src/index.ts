@@ -3,10 +3,14 @@ import { Router, error, json, RequestLike } from "itty-router";
 const router = Router();
 
 router
-	/* Index route */
+	/* Index route (currently health test) */
 	.get("/", () => ({
-		hello: "world",
+		ping: "pong",
 	}))
+	/* Webhook subscription for new events */
+	.get("/hook", (req) => {
+		console.log(JSON.stringify(req));
+	})
 	/* 404 the rest */
 	.all("*", () => error(404));
 
