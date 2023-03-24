@@ -70,6 +70,7 @@ const config = {
 		"no-dupe-else-if": "warn" /* airbnb: not enabled yet */,
 		"no-empty": ["error", { allowEmptyCatch: true }] /* airbnb: added allowEmptyCatch option */,
 		"no-import-assign": "warn" /* airbnb: not enabled yet */,
+		"no-restricted-exports": "off",
 		"no-void": "off" /* False positives + outdated */,
 		"require-await": "error" /* Prevent unnecessary async functions */,
 		"sort-keys": "warn" /* sort object keys */,

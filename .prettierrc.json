@@ -4,7 +4,6 @@
 	"bracketSpacing": true,
 	"endOfLine": "auto",
 	"htmlWhitespaceSensitivity": "ignore",
-	"jsonRecursiveSort": true,
 	"jsxSingleQuote": false,
 	"printWidth": 120,
 	"proseWrap": "never",

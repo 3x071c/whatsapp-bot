@@ -19,7 +19,7 @@ describe("Worker", () => {
 		expect(resp.status).toBe(200);
 
 		const json = await resp.json();
-		expect(json).toEqual({ hello: "world" });
+		expect(json).toEqual({ ping: "pong" });
 	});
 
 	it("should return 404 for undefined routes", async () => {
