@@ -32,12 +32,16 @@ jobs:
               id: deploy
               run: |
                   set -ex -o pipefail
+                  exec 3>&1
                   npm i -g wrangler
-                  URL=$(wrangler publish | tee /dev/stdout | grep 'workers.dev' | head -n 1 | xargs)
+                  URL=$(wrangler publish | tee /dev/fd/3 | grep 'workers.dev' | head -n 1 | xargs)
                   echo "✅ URL: $URL"
                   if ! HOOK=$(curl "https://api.maytapi.com/api/${MAYTAPI_PRODUCT}/setWebhook" \
-                       --header "x-maytapi-key: ${MAYTAPI_TOKEN}" \
-                       --json "{ \"webhook\": \"${URL}/hook\" }" | tee /dev/stdout); then
+                                   --header "Content-Type: application/json" \
+                                   --header "Accept: application/json" \
+                                   --header "x-maytapi-key: ${MAYTAPI_TOKEN}" \
+                                   --data "{ \"webhook\": \"${URL}/hook\" }" | tee /dev/fd/3); then
                       echo "❌ FAILED TO UPDATE HOOK"
                   fi
+                  exec 3>&-
                   echo "::set-output name=url::$URL"
