@@ -9,7 +9,7 @@ router
 		ping: "pong",
 	}))
 	/* Webhook subscription for new events */
-	.get("/hook", (req) => {
+	.post("/hook", (req) => {
 		log(JSON.stringify(req));
 		return {};
 	})
