@@ -1,9 +1,34 @@
 {
 	"allowCompoundWords": true,
+	"dictionaries": [
+		"en_US",
+		"companies",
+		"softwareTerms",
+		"misc",
+		"typescript",
+		"node",
+		"html",
+		"css",
+		"bash",
+		"fonts",
+		"filetypes",
+		"npm"
+	],
 	"flagWords": [],
 	"ignorePaths": [".git", "node_modules"],
 	"import": ["@cspell/dict-de-de/cspell-ext.json"],
 	"language": "en,de",
 	"useGitignore": true,
-	"words": ["Homic", "itty", "tsbuildinfo", "kodiak"]
+	"words": [
+		"airbnb",
+		"codeql",
+		"dessant",
+		"necrobumps",
+		"uhyo",
+		"deepakputhraya",
+		"esbenp",
+		"Homic",
+		"kodiak",
+		"itty"
+	]
 }
