@@ -33,13 +33,11 @@ jobs:
               run: |
                   set -ex -o pipefail
                   npm i -g wrangler
-                  URL=$(wrangler publish | tee /dev/tty | grep 'workers.dev' | head -n 1 | xargs)
+                  URL=$(wrangler publish | tee /dev/stdout | grep 'workers.dev' | head -n 1 | xargs)
                   echo "✅ URL: $URL"
                   if ! HOOK=$(curl "https://api.maytapi.com/api/${MAYTAPI_PRODUCT}/setWebhook" \
                        --header "x-maytapi-key: ${MAYTAPI_TOKEN}" \
-                       --json "{ \"webhook\": \"${URL}/hook\" }"); then
+                       --json "{ \"webhook\": \"${URL}/hook\" }" | tee /dev/stdout); then
                       echo "❌ FAILED TO UPDATE HOOK"
                   fi
-                  echo "➡️ HOOK:"
-                  printf '%s' '$HOOK'
                   echo "::set-output name=url::$URL"
