@@ -19,9 +19,6 @@ jobs:
             - uses: ./.github/actions/ci_setup
             - name: Run Linters
               run: npm run lint
-              env:
-                  ci: true
-                  NODE_ENV: production
     typecheck:
         name: Type Checking # TypeScript checks the static typings in our code
         runs-on: ubuntu-latest
@@ -32,9 +29,6 @@ jobs:
             - uses: ./.github/actions/ci_setup
             - name: Run TypeScript
               run: npm run check
-              env:
-                  ci: true
-                  NODE_ENV: production
     test:
         name: Testing # via vitest
         runs-on: ubuntu-latest
@@ -45,6 +39,3 @@ jobs:
             - uses: ./.github/actions/ci_setup
             - name: Run Tests
               run: npm test
-              env:
-                  ci: true
-                  NODE_ENV: production

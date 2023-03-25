@@ -1,3 +1,14 @@
 name = "whatsapp-bot"
 main = "src/index.ts"
 compatibility_date = "2023-03-23"
+# node_compat = true
+
+[vars]
+ENVIRONMENT = "production"
+
+# [SECRETS]
+# - POSTHOG_TOKEN
+# - MAYTAPI_PRODUCT
+# - MAYTAPI_PHONE
+# - MAYTAPI_TOKEN
+# => ADD THESE TO YOUR DEPLOYMENT VIA `echo <VALUE> | wrangler secret put <KEY>` for each

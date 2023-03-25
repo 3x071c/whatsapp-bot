@@ -4,7 +4,6 @@
 const config = {
 	env: {
 		es2022: true,
-		node: true,
 	},
 	extends: ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended"],
 	overrides: [
@@ -29,6 +28,7 @@ const config = {
 			},
 			plugins: ["@typescript-eslint"],
 			rules: {
+				"@typescript-eslint/consistent-type-definitions": ["warn", "type"],
 				"@typescript-eslint/no-non-null-assertion":
 					"off" /* Required as TypeScript doesn't recognize complex type assertions */,
 			},
