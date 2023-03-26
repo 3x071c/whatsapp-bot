@@ -67,6 +67,7 @@ const config = {
 		] /* Custom settings */,
 		"import/prefer-default-export": "off" /* This makes no sense */,
 		"no-cond-assign": ["error", "except-parens"] /* Added 'except-parens' option */,
+		"no-console": "off" /* Console app */,
 		"no-dupe-else-if": "warn" /* airbnb: not enabled yet */,
 		"no-empty": ["error", { allowEmptyCatch: true }] /* airbnb: added allowEmptyCatch option */,
 		"no-import-assign": "warn" /* airbnb: not enabled yet */,

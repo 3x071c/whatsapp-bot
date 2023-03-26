@@ -1,7 +1,10 @@
 name = "whatsapp-bot"
 main = "src/index.ts"
-compatibility_date = "2023-03-23"
+compatibility_date = "2023-03-21"
 # node_compat = true
+kv_namespaces = [
+  { binding = "MESSAGES", id = "53ac8c9dada54f378389875339653c06", preview_id = "81ef9ce5d8374a80a287196aedb28385" }
+]
 
 [vars]
 ENVIRONMENT = "production"

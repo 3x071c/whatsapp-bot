@@ -15,21 +15,22 @@
 		"npm"
 	],
 	"flagWords": [],
-	"ignorePaths": [".git", "node_modules"],
+	"ignorePaths": [".git", "node_modules", ".mf"],
 	"import": ["@cspell/dict-de-de/cspell-ext.json"],
 	"language": "en,de",
 	"useGitignore": true,
 	"words": [
 		"airbnb",
 		"codeql",
-		"dessant",
-		"necrobumps",
-		"uhyo",
 		"deepakputhraya",
+		"dessant",
 		"esbenp",
 		"Homic",
-		"kodiak",
 		"itty",
-		"maytapi"
+		"kodiak",
+		"maytapi",
+		"necrobumps",
+		"uhyo",
+		"uuids"
 	]
 }

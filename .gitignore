@@ -262,3 +262,5 @@ $RECYCLE.BIN/
 .env*.local
 *.pem
 .*cache
+.dev.vars
+.mf/

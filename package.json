@@ -31,7 +31,7 @@
 		"cspell:individual": "cspell --dot",
 		"cspell:report": "npm run cspell:individual -- \"**\"",
 		"deploy": "wrangler publish",
-		"dev": "wrangler dev --local",
+		"dev": "wrangler dev --experimental-local",
 		"eslint:fix": "npm run eslint:template -- --fix .",
 		"eslint:individual": "npm run eslint:template -- --fix",
 		"eslint:report": "npm run eslint:template -- --max-warnings 0 .",
@@ -51,18 +51,25 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
-		"itty-router": "4.0.0-next.46"
+		"itty-router": "4.0.0-next.46",
+		"lodash": "4.17.21",
+		"string-similarity": "4.0.4",
+		"superjson": "1.12.2",
+		"zod": "3.21.4"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "4.20230321.0",
 		"@commitlint/cli": "17.5.0",
 		"@commitlint/config-conventional": "17.4.4",
 		"@cspell/dict-de-de": "3.1.0",
+		"@miniflare/tre": "3.0.0-next.12",
 		"@secretlint/secretlint-rule-preset-recommend": "6.2.3",
 		"@types/eslint": "8.21.3",
+		"@types/lodash": "4.14.191",
+		"@types/string-similarity": "4.0.0",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
 		"@typescript-eslint/parser": "5.56.0",
-		"cspell": "6.31.0",
+		"cspell": "6.31.1",
 		"eslint": "8.36.0",
 		"eslint-config-airbnb-base": "15.0.0",
 		"eslint-config-airbnb-typescript": "17.0.0",
